@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<style>
+	table{
+		background:#FF6;
+		padding:10px;
+		border:solid 2px #FF0000;	
+	}
+	td{
+		padding:5px 0;
+		border:none;
+	}
+</style>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario Login</title>
+</head>
+<body>
+	<h1 style="text-align:center">Login</h1>
+	<form action="Comprueba_Usuario.jsp" method="post">
+		<table style="width: 35%">
+			<tr>
+				<td><label for="nombre">Nombre: </label></td>
+				<td><input type="text" name="nombre" id="nombre"></td>
+			</tr>
+			<tr>
+				<td><label for="apellido">Apellido: </label></td>
+				<td><input type="text" name="apellido" id="apellido"></td>
+			</tr>
+			<tr>
+				<td><label for="usuario">Usuario: </label></td>
+				<td><input type="text" name="usuario" id="usuario"></td>
+			</tr>	
+			<tr>
+				<td><label for="contra">Contraseña: </label></td>
+				<td><input type="text" name="contra" id="contra"></td>
+			</tr>	
+			<tr>
+				<td><label for="pais">País: </label></td>
+				<td>
+					<select name="pais" id="pais">
+						<option>México</option>
+						<option>Colombia</option>
+						<option>Perú</option>
+						<option>Argentina</option>
+						<option>España</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Tecnologías: </td>
+				<td>
+					<label><input type="radio" name="tecnologias" value="Java" id="tecnologias_0">Java</label><br>
+					<label><input type="radio" name="tecnologias" value="PHP" id="tecnologias_1">Php</label><br>
+					<label><input type="radio" name="tecnologias" value="JavaScript" id="tecnologias_2">JavaScript</label><br>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" name="boton" id="boton" value="Registrar">
+				</td>
+			</tr>							
+		</table>		
+	</form>
+</body>
+</html>
