@@ -1,6 +1,4 @@
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,15 +18,19 @@
 	
 	try{
 		Connection miConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_jsp","root","");	
-		Statement miStatement = miConexion.createStatement();
-		String instruccionSql = "SELECT usuario, contrasena FROM usuarios " +
-				"WHERE usuario LIKE '" + usuario + "' AND contrasena LIKE '" + contra  + "';";
-		try{
-			miStatement.execute(instruccionSql);
-			out.println("Registro grabado correctamente XXX");			
-		}catch(Exception e){
-			out.println("Registro NO grabado en la BBDD XXX");
-		}		
+		
+		PreparedStatement c_preparada = miConexion.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?");
+		
+		c_preparada.setString(1, usuario);
+		c_preparada.setString(2, contra);
+		
+		ResultSet miResultset = c_preparada.executeQuery();
+		
+		if (miResultset.absolute(1)){
+			out.println("Usuario existe en la BBDD");
+		}else{
+			out.println("No hay usuarios con ese nombre");
+		}	
 	}catch(Exception e){
 		out.println("Error de conexión con la BBDD");
 	}

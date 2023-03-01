@@ -24,17 +24,19 @@
 	try{
 		Connection miConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto_jsp","root","");	
 		Statement miStatement = miConexion.createStatement();
-		String instruccionSql = "INSERT INTO usuarios (nombre, apellido, usuario, contrasena, pais, tecnologia) VALUES ('" + 
-			nombre     + "', '" + 
-			apellido   + "', '" + 
-			usuario    + "', '" + 
-			contra     + "', '" + 
-			pais       + "', '" + 
-			tecnologia + "');";
+		String instruccionSql = "INSERT INTO usuarios " +
+				"(nombre, apellido, usuario, contrasena, pais, tecnologia) VALUES ('" + 
+				nombre     + "', '" + 
+				apellido   + "', '" + 
+				usuario    + "', '" + 
+				contra     + "', '" + 
+				pais       + "', '" + 
+				tecnologia + "');";
 		try{
 			miStatement.executeUpdate(instruccionSql);
 			out.println("Registro grabado correctamente");			
 		}catch(Exception e){
+			out.println(instruccionSql);
 			out.println("Registro NO grabado en la BBDD");
 		}		
 	}catch(Exception e){
